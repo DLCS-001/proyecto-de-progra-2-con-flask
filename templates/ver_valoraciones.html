@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Valoraciones de usuarios</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Valoraciones Recibidas</h2>
+    {% if valoraciones %}
+    <table border="1" width="100%" cellpadding="8" cellspacing="0">
+      <tr>
+        <th>Nombre</th>
+        <th>Estrellas</th>
+        <th>Experiencia</th>
+      </tr>
+      {% for v in valoraciones %}
+      <tr>
+        <td>{{ v[0] }}</td>
+        <td>⭐ {{ v[1] }}</td>
+        <td>{{ v[2] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p>No hay valoraciones aún.</p>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="volver">⬅ Volver al inicio</a>
+  </div>
+</body>
+</html>
